@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
-import { log } from 'util';
 
 
 @Component({
@@ -33,7 +32,7 @@ export class ChatDialogComponent implements OnInit {
         'sentBy': 'bot',
         'content': res
       };
-      this.filterKeywords(botMessage.content);
+      this.filterKeywords(botMessage);
     })
     this.formValue = '';
   }
@@ -57,8 +56,8 @@ export class ChatDialogComponent implements OnInit {
   //   }
   // }
 
-  private filterKeywords(botMsg: string) {
-    if (botMsg === 'loginIsssue' || botMsg === 'signupIssue' || botMsg === '') {
+  private filterKeywords(botMsg) {
+    if (botMsg.content === 'loginIsssue' || botMsg.content === 'signupIssue' || botMsg.content === '') {
       this.getLinks(botMsg);
     }
 
