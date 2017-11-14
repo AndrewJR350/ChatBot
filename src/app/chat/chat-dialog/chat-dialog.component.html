@@ -1,0 +1,29 @@
+<div class="container title-name">
+    <h1> Auxilium </h1>
+</div>
+
+<div class="container container-wrapper">
+
+
+    <ng-container *ngFor='let message of messages'>
+        <div class="sentBy">
+            <div class="user" *ngIf="message.sentBy === 'user'">
+                USER
+            </div>
+            <div class="bot" *ngIf="message.sentBy === 'bot'">
+                BOT
+            </div>
+        </div>
+        <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+        'to':   message.sentBy === 'user' }">
+            {{ message.content }}
+        </div>
+    </ng-container>
+    <div *ngIf="links" class="links">
+        <div class="link" *ngFor="let link of links">
+            {{link}}
+        </div>
+    </div>
+    <label class="box-discription" for="nameField">Your Message</label>
+    <input [(ngModel)]="formValue" (keyup.enter)="sentMessage()" type="text">
+</div>
