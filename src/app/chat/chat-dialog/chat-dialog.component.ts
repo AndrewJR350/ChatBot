@@ -34,6 +34,7 @@ export class ChatDialogComponent implements OnInit {
       };
       this.filterKeywords(botMessage);
     })
+    console.log('Messages : ',this.messages);
     this.formValue = '';
   }
 
